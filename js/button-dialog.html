@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+	<title>Add Button</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../../../wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+	<script type="text/javascript">
+		var addbutton = {
+		e: '',
+		init: function(e) {
+			addbutton.e = e;
+			tinyMCEPopup.resizeToInnerSize();
+		},
+		insert: function add_button_to_mce(e) {
+
+			var label = $('#button-label').val();
+			var url = $('#button-url').val();
+			var type = $('#button-type').val();
+			
+			if(url == ''){
+				alert("URL Can Not be blank");
+				return;
+			}
+			
+			if(label == '') {
+				label = 'Submit';
+			}
+			
+			var output = '<a class="btn btn-' + type + '" href="' + url + '">'+ label + '</a>';
+		
+			tinyMCEPopup.execCommand('mceInsertContent', false, output);
+		
+			tinyMCEPopup.close();
+		
+		}
+		}
+		tinyMCEPopup.onInit.add(addbutton.init, addbutton);
+	</script>
+</head>
+<body>
+<form id="AddButton">
+	<p>
+		<label for="button-label">Label:</label><br/>
+		<input id="button-label" type="text" value="" />
+	</p>
+	<p>
+		<label for="button-url">URL:</label><br/>
+		<input id="button-url" size="50" type="text" value="" />
+	</p>
+	<p>
+		<label for="button-type">Type:</label><br/>
+		<select id="button-type" >
+			<option value="default" selected>Default</option>
+			<option value="primary">Primary</option>
+			<option value="success">Success</option>
+			<option value="info">Info</option>
+			<option value="warning">Warning</option>
+			<option value="danger">Danger</option>
+		</select>
+	</p>
+	<p><input type="button" id="submit" value="Submit" onclick="addbutton.insert(addbutton.e)"/></p>
+</form>
+</body>
+</html>
