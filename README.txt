@@ -1,5 +1,5 @@
 === Bootstrap MCE CSS ===
-Contributors: davewarfel, escapecreative
+Contributors: davewarfel, escapecreative, motacekj
 Tags: Bootstrap, TinyMCE, editor style, CSS
 Requires at least: 3.0
 Tested up to: 3.8-RC1
